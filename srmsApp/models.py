@@ -4,6 +4,8 @@ from django.db.models import Sum
 from django.utils import timezone
 
 # Create your models here.
+
+#class model 
 class Class(models.Model):
     level = models.CharField(max_length=250)
     section = models.CharField(max_length=250)
@@ -14,6 +16,8 @@ class Class(models.Model):
     def __str__(self):
         return str(self.level + ' - ' + self.section)
 
+
+#subject 
 class Subject(models.Model):
     name = models.CharField(max_length=250)
     status = models.CharField(max_length=2, choices=(('1','Active'),('2','Inactive')), default = 1)
@@ -23,7 +27,7 @@ class Subject(models.Model):
     def __str__(self):
         return self.name
 
-
+#student 
 class Student(models.Model):
     classI = models.ForeignKey(Class, on_delete= models.CASCADE)
     student_id = models.CharField(max_length=250)
@@ -41,6 +45,7 @@ class Student(models.Model):
     def get_name(self):
         return str(self.first_name + " " + (str(self.middle_name + " " + self.last_name)  if self.middle_name != '' else self.last_name ))
 
+#result 
 class Result(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     semester = models.CharField(max_length=250,blank=True)

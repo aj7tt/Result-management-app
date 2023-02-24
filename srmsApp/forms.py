@@ -72,8 +72,6 @@ class SaveClass(forms.ModelForm):
         
         raise forms.ValidationError("Class Already Exists on the list.")
 
-
-
 class SaveSubject(forms.ModelForm):
     name = forms.CharField(max_length="250")
     status = forms.ChoiceField(choices=[('1','Active'),('2','Inctive')])
